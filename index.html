@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="AMJAD ALSUFYANI — Full Stack Developer, Flutter Mobile Developer, UI/UX-Oriented Software Engineer." />
+  <title>AMJAD ALSUFYANI | Next‑Gen Terminal Portfolio</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="matrixMesh" aria-hidden="true"></canvas>
+  <div class="grid-layer"></div>
+  <div class="scanline"></div>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <div class="ambient ambient-c"></div>
+
+  <div class="boot-screen" id="bootScreen">
+    <div class="boot-window">
+      <div class="boot-title">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <code>boot://amjad-portfolio</code>
+      </div>
+      <div class="boot-lines" id="bootLines"></div>
+      <div class="boot-progress"><span id="bootProgress"></span></div>
+    </div>
+  </div>
+
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <button class="command-open" id="commandOpen" title="Command Center">⌘</button>
+
+  <aside class="command-center" id="commandCenter" aria-hidden="true">
+    <div class="command-panel">
+      <div class="command-head">
+        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+        <code>command-center.sh</code>
+        <button id="commandClose">×</button>
+      </div>
+      <div class="command-search">
+        <span>$</span>
+        <input id="commandInput" placeholder="type a command: projects, skills, contact, theme..." />
+      </div>
+      <div class="command-list" id="commandList">
+        <button data-jump="#projects">cd ./projects</button>
+        <button data-jump="#skills">ls -la skills/</button>
+        <button data-jump="#experience">cat experience.log</button>
+        <button data-jump="#contact">./contact.sh</button>
+        <button data-action="theme">toggle theme accent</button>
+      </div>
+    </div>
+  </aside>
+
+  <header class="top-terminal">
+    <a class="terminal-identity" href="#home" aria-label="Home">
+      <span class="user">amjad</span><span class="at">@</span><span class="host">portfolio</span><span class="path">:~$</span>
+      <span class="caret"></span>
+    </a>
+
+    <nav class="terminal-nav" id="terminalNav" aria-label="Navigation">
+      <a href="#about" data-i18n="navAbout">about</a>
+      <a href="#skills" data-i18n="navSkills">skills</a>
+      <a href="#experience" data-i18n="navExperience">experience</a>
+      <a href="#projects" data-i18n="navProjects">projects</a>
+      <a href="#education" data-i18n="navEducation">education</a>
+      <a href="#contact" data-i18n="navContact">contact</a>
+    </nav>
+
+    <div class="top-actions">
+      <button class="lang-toggle" id="langToggle" type="button">AR</button>
+      <button class="theme-toggle" id="themeToggle" type="button" title="Change accent">●</button>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="section hero-section" id="home">
+      <div class="hero-grid">
+        <div class="hero-left reveal">
+          <div class="terminal-window main-terminal tilt-card">
+            <div class="window-bar">
+              <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+              <code>amjad@portfolio: ~</code>
+              <small>zsh</small>
+            </div>
+
+            <div class="terminal-body">
+              <p class="muted">Last login: Fri May 29 2026 on portfolio</p>
+
+              <div class="cmd-line"><span>$</span> <b data-type data-en="whoami" data-ar="whoami"></b></div>
+              <p class="result green-text">Amjad Alsufyani</p>
+
+              <div class="cmd-line"><span>$</span> <b data-type data-en="cat role.txt" data-ar="cat role.txt"></b></div>
+              <p class="result blue-text" data-i18n="role">Full Stack Developer & Flutter Mobile Developer</p>
+
+              <div class="cmd-line"><span>$</span> <b data-type data-en="echo $IMPACT" data-ar="echo $IMPACT"></b></div>
+              <p class="result amber-text" data-i18n="impact">AI healthcare • distributed water system • national tourism platform</p>
+
+              <div class="cmd-line"><span>$</span> <b data-type data-en="ls tech-stack/" data-ar="ls tech-stack/"></b></div>
+              <p class="result stack-line">Laravel / FastAPI / Nuxt 3 / Flutter / PostgreSQL / Redis / Docker / Gemini AI</p>
+
+              <div class="cmd-line"><span>$</span> <b data-type data-en="cat status.txt" data-ar="cat status.txt"></b></div>
+              <p class="result green-text" data-i18n="available">✓ Available for freelance & full-time work — GCC & MENA</p>
+
+              <div class="cmd-line final-prompt"><span>$</span> <i></i></div>
+            </div>
+          </div>
+
+          <div class="connect reveal delay-1">
+            <code># connect:</code>
+            <a href="https://github.com/amjadkhalil711" target="_blank" rel="noopener">GitHub</a>
+            <a href="mailto:amjadkhalilalsufyani@gmail.com">Email</a>
+            <a href="#contact">Contact</a>
+          </div>
+
+          <div class="hero-actions reveal delay-2">
+            <a class="terminal-btn outline" href="#projects"><span>$</span> cd ./projects</a>
+            <a class="terminal-btn solid" href="#contact">./hire-me.sh</a>
+          </div>
+        </div>
+
+        <aside class="hero-right reveal delay-1">
+          <div class="identity-orb tilt-card">
+            <div class="orbit-ring ring-a"></div>
+            <div class="orbit-ring ring-b"></div>
+            <div class="orbit-ring ring-c"></div>
+            <img src="assets/amjad-avatar-round.png" alt="Amjad Alsufyani" />
+            <div class="identity-meta">
+              <h1>AMJAD ALSUFYANI</h1>
+              <p data-i18n="heroTitle">Full Stack Developer | Flutter Mobile Developer | UI/UX-Oriented Software Engineer</p>
+            </div>
+          </div>
+
+          <div class="quick-stats">
+            <article><strong data-count="1">0</strong><span data-i18n="statExp">Year Experience</span></article>
+            <article><strong data-count="3">0</strong><span data-i18n="statProjects">Flagship Projects</span></article>
+            <article><strong data-count="93">0</strong><span data-i18n="statGpa">GPA</span></article>
+          </div>
+        </aside>
+      </div>
+
+      <div class="scroll-hint">
+        <span>scroll</span>
+        <i>↓</i>
+      </div>
+    </section>
+
+    <section class="section terminal-section" id="about">
+      <div class="section-command reveal"><span>$</span> <b data-type data-en="cat about.md" data-ar="cat about.md"></b></div>
+      <h2 class="terminal-title reveal"><span>~/</span><b data-type data-en="about" data-ar="about"></b></h2>
+
+      <div class="about-layout">
+        <div class="image-window reveal tilt-card">
+          <div class="window-bar">
+            <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+            <code>~/me.jpeg</code>
+          </div>
+          <div class="photo-box">
+            <img src="assets/amjad-profile.png" alt="AMJAD ALSUFYANI profile photo" />
+            <div class="photo-caption">// <span class="green-text">Amjad Alsufyani</span> — <span data-i18n="photoCaption">Full Stack Developer</span></div>
+            <small>Laravel · FastAPI · Nuxt 3 · Flutter · UI/UX · AI</small>
+          </div>
+        </div>
+
+        <article class="markdown-block reveal delay-1">
+          <p data-i18n="aboutP1">I am a full stack and Flutter developer with hands-on experience building real-world web platforms, dashboards, REST APIs, database-driven systems, and AI-enabled products.</p>
+          <p data-i18n="aboutP2">I build projects end-to-end: from idea and UI/UX to backend architecture, APIs, databases, admin dashboards, AI integrations, and product delivery.</p>
+          <p data-i18n="aboutP3">My core strengths include UI/UX design, API-driven systems, Laravel backend development, FastAPI services, Flutter mobile thinking, database modeling, and practical problem solving.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section terminal-section" id="skills">
+      <div class="section-command reveal"><span>$</span> <b data-type data-en="ls -la skills/" data-ar="ls -la skills/"></b></div>
+      <div class="section-head-row reveal">
+        <h2 class="terminal-title"><span>~/</span><b data-type data-en="skills" data-ar="skills"></b></h2>
+        <code>total 12</code>
+      </div>
+
+      <div class="filters reveal">
+        <button class="active" data-filter="all">* all</button>
+        <button data-filter="mobile">mobile</button>
+        <button data-filter="backend">backend</button>
+        <button data-filter="frontend">frontend</button>
+        <button data-filter="ai">ai</button>
+        <button data-filter="devops">devops</button>
+        <button data-filter="architecture">architecture</button>
+        <button data-filter="tools">tools</button>
+      </div>
+
+      <div class="skills-list reveal">
+        <article class="skill-item tilt-card" data-category="mobile"><strong>Flutter</strong><span>Mobile</span></article>
+        <article class="skill-item tilt-card" data-category="mobile"><strong>Dart</strong><span>Mobile</span></article>
+        <article class="skill-item green-skill tilt-card" data-category="backend"><strong>Laravel 11</strong><span>Backend</span></article>
+        <article class="skill-item green-skill tilt-card" data-category="backend"><strong>FastAPI</strong><span>Backend</span></article>
+        <article class="skill-item purple-skill tilt-card" data-category="frontend"><strong>Nuxt 3 / React / Vue</strong><span>Frontend</span></article>
+        <article class="skill-item cyan-skill tilt-card" data-category="frontend"><strong>Tailwind CSS</strong><span>Frontend</span></article>
+        <article class="skill-item amber-skill tilt-card" data-category="ai"><strong>Gemini AI</strong><span>AI</span></article>
+        <article class="skill-item tilt-card" data-category="backend"><strong>REST APIs</strong><span>Backend</span></article>
+        <article class="skill-item teal-skill tilt-card" data-category="architecture"><strong>Microservices</strong><span>Architecture</span></article>
+        <article class="skill-item tilt-card" data-category="devops"><strong>Docker</strong><span>DevOps</span></article>
+        <article class="skill-item tilt-card" data-category="tools"><strong>Git / GitHub</strong><span>Tools</span></article>
+        <article class="skill-item cyan-skill tilt-card" data-category="backend"><strong>PostgreSQL / MySQL / Redis</strong><span>Data</span></article>
+      </div>
+    </section>
+
+    <section class="section terminal-section" id="experience">
+      <div class="section-command reveal"><span>$</span> <b data-type data-en="cat experience.log" data-ar="cat experience.log"></b></div>
+      <h2 class="terminal-title reveal"><span>~/</span><b data-type data-en="experience" data-ar="experience"></b></h2>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <span class="timeline-dot"></span>
+          <div class="timeline-window tilt-card">
+            <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><code>experience/independent.log</code></div>
+            <div class="timeline-content">
+              <h3 data-i18n="experienceTitle">Independent Full Stack Developer</h3>
+              <code>2024 — Present</code>
+              <ul>
+                <li data-i18n="exp1">Built complete web platforms independently, covering UI/UX, frontend, backend, APIs, database design, and admin dashboards.</li>
+                <li data-i18n="exp2">Developed Laravel and FastAPI backends with structured REST APIs, database models, and integration-ready services.</li>
+                <li data-i18n="exp3">Integrated Gemini AI and agent-based workflows into smart ticketing, recommendations, and intelligent product flows.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section terminal-section" id="projects">
+      <div class="section-command reveal"><span>$</span> <b data-type data-en="find ./projects -type f" data-ar="find ./projects -type f"></b></div>
+      <h2 class="terminal-title reveal"><span>~/</span><b data-type data-en="projects" data-ar="projects"></b></h2>
+
+      <div class="projects-command-bar reveal">
+        <button class="active" data-project="all">all</button>
+        <button data-project="ai">ai</button>
+        <button data-project="distributed">distributed</button>
+        <button data-project="platform">platform</button>
+      </div>
+
+      <div class="projects-list">
+        <article class="project-window reveal tilt-card" data-project-category="ai">
+          <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><code>projects/masar.md</code></div>
+          <div class="project-content">
+            <div class="cmd-line"><span>$</span> cat masar.md</div>
+            <h3 data-i18n="masarTitle">Masar — AI Smart Hospital Ticketing System</h3>
+            <p data-i18n="masarText">AI-powered hospital ticket reservation and queue management platform. Achieved 2nd place in Tamheed Competition by Hayel Saeed Anam Group.</p>
+            <ul><li>Nuxt 3 · Tailwind CSS · Laravel 11</li><li>Gemini AI · Node Agent · MySQL · Redis · Docker</li></ul>
+          </div>
+        </article>
+
+        <article class="project-window reveal tilt-card delay-1" data-project-category="distributed">
+          <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><code>projects/ghaith.md</code></div>
+          <div class="project-content">
+            <div class="cmd-line"><span>$</span> cat ghaith.md</div>
+            <h3 data-i18n="ghaithTitle">Ghaith — Distributed Water Management System</h3>
+            <p data-i18n="ghaithText">Distributed water delivery management system connecting citizens with water delivery drivers in Taiz to organize requests and support crisis response.</p>
+            <ul><li>FastAPI · Python · REST APIs · Swagger</li><li>Microservices · Order Management · Admin Dashboard</li></ul>
+          </div>
+        </article>
+
+        <article class="project-window reveal tilt-card delay-2" data-project-category="platform">
+          <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><code>projects/yemen-tourism.md</code></div>
+          <div class="project-content">
+            <div class="cmd-line"><span>$</span> cat yemen-tourism.md</div>
+            <h3 data-i18n="tourismTitle">Yemen Tourism Platform</h3>
+            <p data-i18n="tourismText">National tourism platform for Yemen’s natural, historical, coastal, island, and city landmarks with Google Maps navigation and AI recommendations.</p>
+            <ul><li>Nuxt 3 · Laravel 11 · PostgreSQL · Redis</li><li>Google Maps · Gemini AI · Admin Dashboard</li></ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section terminal-section" id="education">
+      <div class="section-command reveal"><span>$</span> <b data-type data-en="cat education.json" data-ar="cat education.json"></b></div>
+      <h2 class="terminal-title reveal"><span>~/</span><b data-type data-en="education" data-ar="education"></b></h2>
+
+      <div class="json-window reveal tilt-card">
+        <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><code>education.json</code></div>
+        <pre>{
+  <span class="key">"degree"</span>: <span class="value">"Bachelor of Information Technology"</span>,
+  <span class="key">"university"</span>: <span class="value">"University of Science and Technology"</span>,
+  <span class="key">"period"</span>: <span class="value">"2022 - 2026"</span>,
+  <span class="key">"gpa"</span>: <span class="value">"93%"</span>,
+  <span class="key">"location"</span>: <span class="value">"Yemen"</span>
+}</pre>
+      </div>
+
+      <div class="description-block reveal">
+        <div class="cmd-line"><span>$</span> cat focus.txt</div>
+        <p data-i18n="educationDesc">Comprehensive study in Information Technology with focus on software development, databases, system architecture, distributed systems, and emerging AI-enabled technologies.</p>
+      </div>
+    </section>
+
+    <section class="section terminal-section" id="cv">
+      <div class="section-command reveal"><span>$</span> <b data-type data-en="ls -lh cv/" data-ar="ls -lh cv/"></b></div>
+      <h2 class="terminal-title reveal"><span>~/</span><b data-type data-en="cv" data-ar="cv"></b></h2>
+
+      <div class="cv-window reveal tilt-card">
+        <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><code>~/cv/AMJAD_ALSUFYANI_CV.txt</code></div>
+        <div class="cv-content">
+          <div class="file-icon">▣</div>
+          <div>
+            <h3>AMJAD_ALSUFYANI_CV.txt</h3>
+            <p data-i18n="cvDesc">Curriculum Vitae · Full Stack Developer · Flutter Mobile Developer</p>
+            <ul>
+              <li data-i18n="cv1">✓ Work experience & projects</li>
+              <li data-i18n="cv2">✓ Technical skills & stack</li>
+              <li data-i18n="cv3">✓ Education & contact information</li>
+            </ul>
+            <a class="download-btn" href="assets/AMJAD_ALSUFYANI_CV.txt" download><span>$</span> wget cv.txt --output AMJAD_ALSUFYANI_CV.txt</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section terminal-section contact-section" id="contact">
+      <div class="section-command reveal"><span>$</span> <b data-type data-en="./contact.sh --send-message" data-ar="./contact.sh --send-message"></b></div>
+      <h2 class="terminal-title reveal"><span>~/</span><b data-type data-en="contact" data-ar="contact"></b></h2>
+
+      <div class="contact-grid">
+        <article class="contact-info reveal">
+          <div class="cmd-line"><span>$</span> cat contact-info.txt</div>
+          <h3 data-i18n="connectTitle">Let's Connect</h3>
+          <p data-i18n="connectText">I'm excited to collaborate on useful products, modern platforms, and innovative software solutions.</p>
+
+          <div class="env-line">export <b>EMAIL</b> = <span>"amjadkhalilalsufyani@gmail.com"</span></div>
+          <div class="env-line">export <b>PHONE</b> = <span>"+967734864275"</span></div>
+          <div class="env-line">export <b>GITHUB</b> = <span>"github.com/amjadkhalil711"</span></div>
+
+          <div class="availability-row"><i></i><span data-i18n="freelance">Available for freelance work</span><code>// response within 24h</code></div>
+        </article>
+
+        <form class="message-window reveal delay-1 tilt-card" id="contactForm">
+          <div class="window-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><code data-i18n="sendMessage">Send a Message</code></div>
+          <div class="form-body">
+            <div class="cmd-line"><span>$</span> ./send-message.sh</div>
+            <label>&gt; name:<input id="nameInput" type="text" placeholder="your name" /></label>
+            <label>&gt; email:<input type="email" placeholder="your@email.com" /></label>
+            <label>&gt; subject:<input type="text" placeholder="project discussion" /></label>
+            <label>&gt; message:<textarea placeholder="describe your project..."></textarea></label>
+            <button class="send-btn" type="submit">$ ./send-message.sh ✈</button>
+            <p class="sent-msg" id="sentMsg"></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <button class="back-top" id="backTop">↑</button>
+  <script src="script.js"></script>
+</body>
+</html>

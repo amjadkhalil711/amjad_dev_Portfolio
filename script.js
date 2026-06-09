@@ -131,7 +131,7 @@ function typeElement(el){
   el.textContent = "";
   el.classList.add("typing");
   let i = 0;
-  const speed = 28;
+  const speed = 60;
   function tick(){
     if(i <= text.length){
       el.textContent = text.slice(0, i++);

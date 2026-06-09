@@ -122,37 +122,71 @@ function bootStep(){
 }
 bootStep();
 
-// Type when each element enters viewport
+// Sequential typing — one visible group at a time
 const typedElements = new WeakSet();
+let typingQueue = Promise.resolve();
+
 function typeElement(el){
-  if(typedElements.has(el)) return;
-  typedElements.add(el);
-  const text = currentLang === "ar" ? (el.dataset.ar || el.dataset.en || "") : (el.dataset.en || el.dataset.ar || "");
-  el.textContent = "";
-  el.classList.add("typing");
-  let i = 0;
-  const speed = 60;
-  function tick(){
-    if(i <= text.length){
-      el.textContent = text.slice(0, i++);
-      setTimeout(tick, speed);
-    } else {
-      el.classList.remove("typing");
+  return new Promise(resolve => {
+    if(typedElements.has(el)){
+      resolve();
+      return;
     }
-  }
-  tick();
+
+    typedElements.add(el);
+
+    const text =
+      currentLang === "ar"
+        ? (el.dataset.ar || el.dataset.en || "")
+        : (el.dataset.en || el.dataset.ar || "");
+
+    el.textContent = "";
+    el.classList.add("typing");
+
+    let i = 0;
+    const speed = 55;
+
+    function tick(){
+      if(i <= text.length){
+        el.textContent = text.slice(0, i++);
+        setTimeout(tick, speed);
+      } else {
+        el.classList.remove("typing");
+        setTimeout(resolve, 350);
+      }
+    }
+
+    tick();
+  });
 }
+
+async function typeGroupSequentially(container){
+  const items = [...container.querySelectorAll("[data-type]")];
+
+  for(const item of items){
+    await typeElement(item);
+  }
+}
+
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if(entry.isIntersecting){
       entry.target.classList.add("visible");
-      entry.target.querySelectorAll("[data-type]").forEach(typeElement);
-      if(entry.target.matches("[data-type]")) typeElement(entry.target);
-      entry.target.querySelectorAll("[data-count]").forEach(startCounter);
+
+      typingQueue = typingQueue.then(() => typeGroupSequentially(entry.target));
+
+      entry.target
+        .querySelectorAll("[data-count]")
+        .forEach(startCounter);
+
+      revealObserver.unobserve(entry.target);
     }
   });
-}, {threshold: 0.22});
-document.querySelectorAll(".reveal, [data-type]").forEach(el => revealObserver.observe(el));
+}, { threshold: 0.22 });
+
+document
+  .querySelectorAll(".reveal")
+  .forEach(el => revealObserver.observe(el));
 
 // Counters
 const counted = new WeakSet();
